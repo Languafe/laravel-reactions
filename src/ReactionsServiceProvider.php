@@ -8,6 +8,7 @@ class ReactionsServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        // Use defaults when the package user has not published config file
         $this->mergeConfigFrom(
             __DIR__.'/../config/reactions.php', 'reactions'
         );
