@@ -28,11 +28,8 @@ Add the following to composer.json
 ...
 "repositories": [
       {
-          "type": "path",
-          "url": "/home/erik/code/days-of-coolness/daft-donkey", // replace this...
-          "options": {
-              "symlink": true
-          }
+          "type": "vcs",
+          "url": "git@github.com:Languafe/laravel-reactions.git"
       }
   ],
 ...
