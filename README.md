@@ -17,25 +17,9 @@ reaction for the user).
 
 ## Installation
 
-Add the following to composer.json
+`composer require languafe/laravel-reactions`
 
-```
-"require": {
-  ...
-  "languafe/laravel-reactions": "dev-main",
-  ...
-}
-...
-"repositories": [
-      {
-          "type": "vcs",
-          "url": "git@github.com:Languafe/laravel-reactions.git"
-      }
-  ],
-...
-```
-
-Install the package with `composer update languafe/laravel-reactions` after doing this.
+`php artisan migrate`
 
 ### Publishing resources
 
