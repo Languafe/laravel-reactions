@@ -1,9 +1,17 @@
 # languafe/laravel-reactions
 
-Day of Coolness project July 5th 2022 by Erik Langhaug.
+This package allows you to add reactions to eloquent models, and includes a
+ready-to-use blade component that renders a reaction panel with clickable
+buttons (requires authentication) and the count for each reaction.
 
-"Creating a Laravel package."
+Reactions are implemented as a polymorphic one-to-many relationship, and can be
+added to any existing model by adding the `HasReactions` trait.
 
+The package adds a HTTP POST endpoint at `/reactions`, which is used by the
+reaction panel's UI in order to store reactions.
+
+Created during "Day of Coolness" at Joubel on July 5th 2022 by Erik Langhaug
+where my goal was to learn about creating Laravel packages.
 
 # Usage
 
@@ -11,17 +19,21 @@ In order to make use of this package, you need an eloquent model for which you
 wish to enable "reactions" (which are just represented as strings and can be
 anything you like).
 
-By default, only authenticated users will be able to add reactions, and each
-user can only add a specific reaction once (clicking again will delete that
-reaction for the user).
-
 ## Installation
+
+Add the package as a composer dependency.
 
 `composer require languafe/laravel-reactions`
 
+Run included migration to create the `reactions` database table.
+
 `php artisan migrate`
 
-### Publishing resources
+### Publishable items
+
+> A "publishable" item from a Laravel package is something you can copy into the
+project directory of your own Laravel application in order to override default
+behavior provided by the package.
 
 #### Configuration
 
@@ -30,6 +42,13 @@ To publish the config file (currently used to set which reactions are allowed) d
 `php artisan vendor:publish --tag=reactions-config`
 
 Edit the config/reactions.php file to control which reactions are allowed.
+
+```php
+<?php // config/reactions.php
+return [
+    'allowed' => ['👍', '🙂', '👎', '🙁']
+];
+```
 
 #### Overriding views
 
