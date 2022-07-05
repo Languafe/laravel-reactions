@@ -1,0 +1,31 @@
+{
+    "name": "languafe/laravel-reactions",
+    "description": "Add reactions to Eloquent models.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Erik Langhaug"
+        }
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "illuminate/database": "^9",
+        "illuminate/http": "^9",
+        "illuminate/support": "^9.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Languafe\\Reactions\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Languafe\\Reactions\\ReactionsServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
