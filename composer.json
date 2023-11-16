@@ -9,9 +9,9 @@
     ],
     "require": {
         "php": "^8.0.2",
-        "illuminate/database": "^9",
-        "illuminate/http": "^9",
-        "illuminate/support": "^9.0.0"
+        "illuminate/database": "^10",
+        "illuminate/http": "^10",
+        "illuminate/support": "^10"
     },
     "autoload": {
         "psr-4": {
