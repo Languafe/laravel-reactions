@@ -5,6 +5,7 @@ namespace Languafe\Reactions\Traits;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Languafe\Reactions\Models\Reaction;
 
 trait HasReactions
@@ -38,7 +39,7 @@ trait HasReactions
     public function getReactionsWithCountsAttribute()
     {
         return $this->reactions()
-            ->select('reaction', \DB::raw('count(*) as count'))
+            ->select('reaction', DB::raw('count(*) as count'))
             ->groupBy('reaction')
             ->get();
     }
@@ -56,7 +57,7 @@ trait HasReactions
         return $this->reactions()->where('reaction', $reaction)->exists();
     }
 
-    public function hasReactionFrom(Authenticatable $user, string $reaction = null)
+    public function hasReactionFrom(Authenticatable $user, ?string $reaction = null)
     {
         $query = $this->reactions()->where('user_id', $user->getAuthIdentifier());
 
