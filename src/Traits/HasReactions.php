@@ -18,20 +18,26 @@ trait HasReactions
         return $this->morphMany(Reaction::class, 'reactable');
     }
 
-    public function react(string $reaction, ?Authenticatable $user)
+    public function react(string $reaction, ?Authenticatable $user = null)
     {
         if (!$user) {
             $user = Auth::user();
         }
 
-        $values = [
+        $attributes = [
             'reaction' => $reaction,
             'reactable_type' => get_class($this),
             'reactable_id' => $this->getKey(),
             'user_id' => $user->getAuthIdentifier(),
         ];
 
-        $reaction = Reaction::create($values);
+        if (Reaction::where($attributes)->exists()) {
+            // User has already added this reaction, so we remove it
+            Reaction::where($attributes)->delete();
+            return;
+        }
+
+        $reaction = Reaction::create($attributes);
 
         $this->reactions()->save($reaction);
     }

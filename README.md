@@ -82,4 +82,10 @@ prop is expected to have the `HasReactions` trait.
 <x-reactions::panel :model="App\Models\Post::first()" />
 ```
 
+You can also use the Livewire component:
+
+```
+<livewire:reactions:panel :model="App\Models\Post::first()" />
+```
+
 If you are signed in, you should be able to click each reaction.

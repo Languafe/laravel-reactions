@@ -3,6 +3,7 @@
 namespace Languafe\Reactions;
 
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class ReactionsServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,9 @@ class ReactionsServiceProvider extends ServiceProvider
 
         // Some "batteries-included" anonymous blade components
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'reactions');
+
+        // Register Livewire component
+        Livewire::component('reactions:panel', \Languafe\Reactions\Livewire\ReactionsPanel::class);
 
         // Allow users of this package to publish the config file
         $this->publishes([
