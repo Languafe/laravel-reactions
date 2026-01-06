@@ -22,7 +22,10 @@
         "laravel": {
             "providers": [
                 "Languafe\\Reactions\\ReactionsServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Reactions": "Languafe\\Reactions\\Facades\\Reactions"
+            }
         }
     },
     "config": {

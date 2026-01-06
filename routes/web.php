@@ -19,7 +19,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
         $reactionAttributes['user_id'] = Auth::id();
 
-        $query = Reaction::where([
+        $reaction = Reaction::where([
             'reaction' => $reactionAttributes['reaction'],
             'reactable_type' => $reactionAttributes['reactable_type'],
             'reactable_id' => $reactionAttributes['reactable_id'],
@@ -27,8 +27,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         ]);
 
         // Check if current user has already added this reaction
-        if ($query->exists()) {
-            $query->delete();
+        if ($reaction->exists()) {
+            $reaction->delete();
         }
         else {
             Reaction::create($reactionAttributes);
