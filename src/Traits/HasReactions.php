@@ -63,8 +63,12 @@ trait HasReactions
         return $this->reactions()->where('reaction', $reaction)->exists();
     }
 
-    public function hasReactionFrom(Authenticatable $user, ?string $reaction = null)
+    public function hasReactionFrom(?Authenticatable $user, ?string $reaction = null)
     {
+        if (!$user) {
+            return false;
+        }
+
         $query = $this->reactions()->where('user_id', $user->getAuthIdentifier());
 
         if ($reaction) {

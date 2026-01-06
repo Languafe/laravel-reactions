@@ -23,7 +23,7 @@ class ReactionsPanel extends \Livewire\Component
                 <button 
                     wire:click="react('{{ $option }}')" 
                     wire:key="reaction-{{ $option }}" 
-                    style="border: 1px solid #ccc; padding: 1px 2px; @if ($this->model->hasReactionFrom(auth()->user(), $option)) font-weight: bold; @endif"
+                    style="border: 1px solid #ccc; padding: 1px 2px; @if ($this->model->hasReactionFrom(auth()?->user(), $option)) font-weight: bold; @endif"
                 >
                     @if (isset($this->model->reactionsKeyed[$option]))
                         {{ $this->model->reactionsKeyed[$option]->count }}
